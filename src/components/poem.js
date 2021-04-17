@@ -1,5 +1,5 @@
 import React from "react"
-import { poem, timestamp } from "./poem.module.css"
+import { poem, timestamp } from "./poem.module.scss"
 
 export default function Poem({ content, createdAt }) {
   return (

@@ -35,6 +35,40 @@ h2 {
   font-weight: 200;
   margin: 5px;
 }
+
+//index page
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+
+  .first-section {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    padding: 40px 0;
+
+    article {
+      padding: 40px;
+    }
+  }
+  .second-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #fff1e6;
+    padding: 40px 0;
+
+    article {
+      padding: 40px;
+    }
+  }
+
+  .third-section {
+    text-align: center;
+    padding: 40px 0;
+    margin-bottom: 80px;
+  }
+}
+
+//poems page
 .poems {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
