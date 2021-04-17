@@ -8,17 +8,22 @@ import Poem from "../components/poem"
 
 export default function Home({ data }) {
   const poems = data.allContentfulPoem.nodes
+  const mainPageLeft = data.allContentfulMainpageLeftDescriptionTextNode.nodes
+  const mainPageRight =
+    data.allContentfulMainpageRightDescription1TextNode.nodes
 
   return (
     <Layout>
       <div className="container">
         <section className="first-section">
-          <article>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-            illo assumenda porro labore nemo vero adipisci ipsum vel deserunt
-            iste! Tempore dolorem veritatis autem libero quae praesentium quasi
-            magnam itaque.
-          </article>
+          {mainPageLeft.map(c => (
+            <article
+              key={c.childMarkdownRemark.id}
+              dangerouslySetInnerHTML={{
+                __html: c.childMarkdownRemark.html,
+              }}
+            ></article>
+          ))}
           <StaticImage
             src="../images/jess-bailey-cvUIv9j5wDg-unsplash.jpg"
             alt=""
@@ -36,12 +41,14 @@ export default function Home({ data }) {
           />
           {/* Photo by <a href="https://unsplash.com/@hudsoncrafted?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Debby Hudson</a> on <a href="/collections/1809671/books%2C-desktop%2C-study%2C-office?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> */}
 
-          <article>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-            perspiciatis earum adipisci iste quia cupiditate, magni itaque
-            quisquam? Sed totam fuga ex in aspernatur voluptate dolores iusto
-            quo facere necessitatibus?
-          </article>
+          {mainPageRight.map(c => (
+            <article
+              key={c.childMarkdownRemark.id}
+              dangerouslySetInnerHTML={{
+                __html: c.childMarkdownRemark.html,
+              }}
+            ></article>
+          ))}
         </section>
         <section className="third-section">
           <h2>- Latest -</h2>
@@ -85,6 +92,22 @@ export const query = graphql`
             html
             id
           }
+        }
+      }
+    }
+    allContentfulMainpageLeftDescriptionTextNode {
+      nodes {
+        childMarkdownRemark {
+          html
+          id
+        }
+      }
+    }
+    allContentfulMainpageRightDescription1TextNode {
+      nodes {
+        childMarkdownRemark {
+          html
+          id
         }
       }
     }
