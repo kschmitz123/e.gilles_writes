@@ -33,7 +33,7 @@ export default function Poems({ data }) {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query AllPoems {
     allContentfulPoem {
       nodes {
         title
